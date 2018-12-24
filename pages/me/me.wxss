@@ -1,0 +1,67 @@
+.container{
+  min-height: 100%;
+  overflow: hidden;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.userinfo {
+	display: flex;
+	flex-direction: column;
+	padding: 50rpx 0;
+	align-items: center;
+	background: linear-gradient(30deg,rgb(32, 216, 32),rgb(228, 233, 229));
+  width: 750rpx;
+  
+}
+.choice{
+  padding-top: 30rpx;
+}
+.userinfo-avatar {
+	width: 180rpx;
+	height: 180rpx;
+	margin: 20rpx;
+	border-radius: 50%;
+}
+
+.userinfo-nickname {
+  margin-top: 20rpx;
+  color: #160505;
+  font-size: 44rpx;
+}
+
+.choice-container{
+  margin: 0rpx 25rpx 20rpx 25rpx;
+  border-bottom: 1px solid #ededed;
+  height: 65rpx;
+}
+.icon{
+  height:50rpx;
+  width:50rpx;
+  vertical-align: middle;
+}
+.arrow{
+  height: 40rpx;
+  width:40rpx;
+  float: right;
+  vertical-align: middle;
+  margin-top: 8rpx;
+}
+.text{
+  font-size: 35rpx;
+  margin-left: 20rpx;
+  vertical-align: middle;
+  line-height: 50rpx;
+}
+
+.my-item{
+    width: 100%;
+    background: url(https://cdn.it120.cc/images/weappshop/arrow-right.png) no-repeat 750rpx center;
+    background-size: 16rpx auto,750rpx auto;
+    margin: 20rpx 0; 
+    border-bottom: 1px solid #48da6871, 214, 135);
+    height: 100rpx;
+    line-height: 100rpx;
+    padding-left: 100rpx;
+}
+

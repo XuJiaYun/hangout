@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/me/me",
+    "pages/posts/posts",
+    "pages/posts/post-detail/post-detail",
+    "pages/plan/plan"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "white"
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/posts/posts",
+        "text": "主页",
+        "iconPath": "/images/icon/main.png",
+        "selectedIconPath": "/images/icon/onmain.png"
+      },
+      {
+        "pagePath":"pages/plan/plan",
+        "text":"活动列表",
+        "iconPath":"/images/icon/plan.png",
+        "selectedIconPath":"/images/icon/onplan.png"
+      },
+      {
+        "pagePath":"pages/me/me",
+        "text":"个人中心",
+        "iconPath":"/images/icon/me.png",
+        "selectedIconPath":"/images/icon/onme.png"
+      }
+    ]
+  }
+}
