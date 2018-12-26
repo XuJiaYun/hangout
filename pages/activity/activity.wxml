@@ -1,0 +1,12 @@
+<import src="activity-item/activity-item-template.wxml"/>
+<view>
+  <view class="search">
+    <icon type="search" class="search-img" size="13" color="#405f80"></icon>
+    <input type="text" placeholder="栖霞山" placeholder-class="placeholder" ></input>
+    <image src="/images/icon/xx.png" class="xx-img"></image>
+  </view>
+  <view>
+    <template is="activityItem"></template>
+    <template is="activityItem"></template>
+  </view>
+</view>

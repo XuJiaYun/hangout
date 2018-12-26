@@ -1,0 +1,50 @@
+.item-container{
+  display:flex;
+  flex-direction: row;
+  height: 150rpx;
+  border-bottom: 1px solid #ededed;
+  margin-top: 10rpx;
+  width: 750rpx;
+  margin-right: 10rpx;
+}
+.post-img{
+  width: 240rpx;
+  height: 140rpx;
+}
+.text-container{
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  height: 140rpx;
+  width: 350rpx;
+}
+.title{
+  font-size: 35rpx;
+  color: #333;
+}
+.time{
+  margin-top: 8rpx;
+  font-size:26rpx;
+  color:#333;
+}
+.destination{
+  margin-top: 8rpx;
+  font-size: 26rpx;
+  color:#333;
+}
+.state{
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+}
+.rest-date{
+  margin-top: 10rpx;
+  font-size: 25rpx;
+}
+.appointment{
+  
+  margin-right: 20rpx;
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 5rpx;
+}

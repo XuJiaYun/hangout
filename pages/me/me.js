@@ -62,5 +62,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  aboutUs:function(){
+    wx.showModal({
+      title: '关于我们',
+      content: '客服电话: 024-15061886747\r\n 周一至周五: 08:30-18:00 \r\n祝大家使用愉快！',
+      showCancel: false
+    })
   }
 })

@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/activity/activity",
     "pages/me/me",
     "pages/posts/posts",
-    "pages/posts/post-detail/post-detail",
-    "pages/plan/plan"
+    "pages/posts/post-detail/post-detail"
+    
   ],
   "window": {
     "navigationBarBackgroundColor": "white"
@@ -18,7 +19,7 @@
         "selectedIconPath": "/images/icon/onmain.png"
       },
       {
-        "pagePath":"pages/plan/plan",
+        "pagePath":"pages/activity/activity",
         "text":"活动列表",
         "iconPath":"/images/icon/plan.png",
         "selectedIconPath":"/images/icon/onplan.png"

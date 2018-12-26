@@ -1,0 +1,15 @@
+<template name="activityItem">
+  <view class="item-container">
+    <image class="post-img" src="/images/post/cat.png"></image>
+    <view class="text-container">
+      <text class="title">栖霞山七日游游游</text>
+      <text class="time">2018.5.11</text>
+      <text class="destination">南京市栖霞山</text>
+    </view>
+    <view class="state">
+      <image class="appointment" src="/images/icon/appointment.png" ></image>
+      <text class="rest-date">剩余5天</text>
+    </view>
+    
+  </view>
+</template>

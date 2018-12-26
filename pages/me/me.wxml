@@ -25,12 +25,12 @@
         <image class="arrow" src="/images/icon/arrow-right-grey.png"></image>
       </navigator>
     </view>
-    <view class="choice-container">
-      <navigator hover-class="navigator-hover">
+    <view class="choice-container" bindtap="aboutUs">
+      <view>
         <image class="icon" src="/images/icon/customer.png"></image>
         <text class="text">联系客服</text>
         <image class="arrow" src="/images/icon/arrow-right-grey.png"></image>
-      </navigator>
+      </view>
     </view>
   </view>
 
