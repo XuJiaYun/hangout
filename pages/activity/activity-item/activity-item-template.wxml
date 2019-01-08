@@ -1,5 +1,6 @@
 <template name="activityItem">
-  <view class="item-container">
+
+  <i-card class="item-container">
     <image class="post-img" src="/images/post/cat.png"></image>
     <view class="text-container">
       <text class="title">栖霞山七日游游游</text>
@@ -11,5 +12,6 @@
       <text class="rest-date">剩余5天</text>
     </view>
     
-  </view>
+  </i-card>
+
 </template>

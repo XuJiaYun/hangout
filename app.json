@@ -1,13 +1,18 @@
 {
   "pages": [
-    "pages/activity/activity",
-    "pages/me/me",
     "pages/posts/posts",
-    "pages/posts/post-detail/post-detail"
-    
+    "pages/authorize/index",
+    "pages/me/me",
+    "pages/me/mypost/mypost",
+    "pages/activity/activity",
+    "pages/posts/post-detail/post-detail",
+    "pages/me/myactivity/myactivity",
+    "pages/me/mydata/mydata",
+    "pages/me/mymodify/mymodify"
   ],
   "window": {
-    "navigationBarBackgroundColor": "white"
+    "navigationBarBackgroundColor": "white",
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "borderStyle": "white",

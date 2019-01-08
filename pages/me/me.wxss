@@ -10,7 +10,7 @@
 	flex-direction: column;
 	padding: 50rpx 0;
 	align-items: center;
-	background: linear-gradient(30deg,rgb(32, 216, 32),rgb(228, 233, 229));
+	background: linear-gradient(30deg,rgb(32, 71, 201),rgb(228, 233, 229));
   width: 750rpx;
   
 }

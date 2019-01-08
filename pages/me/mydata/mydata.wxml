@@ -1,0 +1,37 @@
+<!--pages/userSetting/userSetting.wxml-->
+
+
+<view class='moreinfo'>
+  <view class='moreinfo-block'>
+    <navigator class='moreinfo-item' url="../mymodify/mymodify?type=name&value={{userInfo.name}}" open-type="navigate">
+      <text class='moreinfo-left'><text class="iconfont icon-yonghuxingshi"></text>姓名</text>
+      <text class='moreinfo-right'>{{userInfo.name}}</text>
+      <text class="iconfont icon-youjiantou"></text>
+    </navigator>
+
+    <view class="line"></view>
+
+    <navigator class='moreinfo-item' url="../mymodify/mymodify?type=gender&value={{userInfo.gender}}" open-type="navigate">
+      <text class='moreinfo-left'><text class="iconfont icon-xingbie"></text>性别</text>
+      <text class='moreinfo-right'>{{userInfo.gender}}</text>
+      <text class="iconfont icon-youjiantou"></text>
+    </navigator>
+
+    <view class="line"></view>
+
+    <navigator class='moreinfo-item' url="../mymodify/mymodify?type=phone&value={{userInfo.phone}}" open-type="navigate">
+      <text class='moreinfo-left'><text class="iconfont icon-phone"></text>手机号码</text>
+      <text class='moreinfo-right'>{{userInfo.phone}}</text>
+      <text class="iconfont icon-youjiantou"></text>
+    </navigator>
+
+    <view class="line"></view>
+
+
+    <view class='moreinfo-item'>
+      <text class='moreinfo-left'><text class="iconfont icon-shijian"></text>注册时间</text>
+      <text class='moreinfo-right'>{{userInfo.joinDate}}</text>
+      <view class='empty'></view>
+    </view>
+  </view>
+</view>

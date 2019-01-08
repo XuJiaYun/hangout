@@ -1,4 +1,4 @@
-<import src="post-item/post-item-template.wxml" />
+<import src="../activity/activity-item/activity-item-template.wxml"/>
 <view>
   <swiper indicator-dots="true" autoplay="true" interval="5000">
     <swiper-item>
@@ -11,9 +11,22 @@
       <image src="/images/iqiyi.png"></image>
     </swiper-item>
   </swiper>
-  <block wx:for="{{posts_key}}" wx:for-item="item">
-    <view catchtap="onPostTap" data-postid="{{item.postId}}">
-      <template is="postItem" data="{{...item}}" />
+  <i-panel title="" style="width:100%">
+    <view style="padding: 5px;width=100%;display:flex">
+      <view class="filter-item" bindtap='getTaskByTime'><text class="{{activeTime}}">最新发布</text></view>
+      <view class="filter-item" bindtap='getTaskByMoney'><text class="{{activeMoney}}">最多酬劳</text></view>
+      <picker mode="selector" range="{{taskTypes}}" value="0" bindchange='getTaskByType'>
+        <view class="filter-item {{activeType}}" id="type-filter">
+          {{taskType}}
+        </view>
+      </picker>
+      <view class="filter-item" style="margin-left:auto;">
+        <button class="torelease-btn" bindtap="toRelease" size="mini" shape="circle" >发布任务</button>
+      </view>
     </view>
-  </block>
+</i-panel>
+  <view>
+    <template is="activityItem"></template>
+    <template is="activityItem"></template>
+  </view>
 </view>

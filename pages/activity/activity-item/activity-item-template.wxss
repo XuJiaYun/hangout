@@ -4,8 +4,12 @@
   height: 150rpx;
   border-bottom: 1px solid #ededed;
   margin-top: 10rpx;
-  width: 750rpx;
-  margin-right: 10rpx;
+  width: 700rpx;
+  margin-left: 25rpx;
+  
+ 
+  
+ 
 }
 .post-img{
   width: 240rpx;
