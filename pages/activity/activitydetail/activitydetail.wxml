@@ -1,0 +1,48 @@
+
+<view class="container">
+  
+  <view class="item-container">
+    <text class="text">出游标题    </text>
+    <text class="text">{{travelname}}</text>
+  </view>
+  <view class="item-container">
+    <text class="text">出游地点    </text>
+    <text class="text">{{city}}</text>
+  </view>
+  <view class="item-container">
+    <text class="text">开始日期    </text>
+    <text class="text">{{starttime}}</text>
+  </view>
+  <view class="item-container">
+    <text class="text">结束日期    </text>
+    <text class="text">{{endtime}}</text>
+  </view>
+  <view class="item-container">
+    <text class="text">出游类型    </text>
+    <text class="text">{{kind}}</text>
+  </view>
+  <view class="item-container">
+    <text class="text">人均消费    </text>
+    <text class="text">{{cost}}</text>
+  </view>
+  <view class="item-container">
+    <text class="text">出游描述    </text>
+    <text class="text">{{description}}</text>
+  </view>
+  <view class="item-container">
+    <text class="text">最大人数    </text>
+    <text class="text">{{totalnumber}}</text>
+  </view>
+  <view wx:if="{{openid==authorid}}" style="padding:10px;">
+      <i-button type="success" bind:click="handleModify" size="small" long="true" shape="circle">修改出游</i-button>
+  </view>
+  <view wx:if="{{openid==authorid}}" style="padding:10px;">
+      <i-button type="success" bind:click="handleDelete" size="small" long="true" shape="circle">删除出游</i-button>
+  </view>
+  <view  wx:if="{{condition}}" wx:if="{{flag}}" style="padding:10px;">
+      <i-button type="success"  size="small" long="true" shape="circle" catchtap='quit'>退出出游</i-button>
+  </view>
+  <view  wx:if="{{condition}}" wx:if="{{!flag}}" style="padding:10px;">
+      <i-button type="success"  size="small" long="true" shape="circle" catchtap='joinIn'>参与出游</i-button>
+  </view>
+</view>

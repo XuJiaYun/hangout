@@ -1,2 +1,15 @@
-<!--pages/me/myactivity/myactivity.wxml-->
-<text>pages/me/myactivity/myactivity.wxml</text>
+<import src="../../activity/activity-item/activity-item-template.wxml"/>
+<view>
+  
+  <view style="display:flex;width:100%">
+    <view class="filter-item {{activeRelease}}" bindtap="showReleasedTasks"><text>我发布的</text></view>
+      <view class="filter-item {{activeAccept}} "  bindtap="showAcceptedTasks"><text>我参加的</text></view>
+  </view>
+  <view>
+    <template is="activityItem"></template>
+    <template is="activityItem"></template>
+  </view>
+  <view style="display:inline-block" wx:for="{{activities}}" wx:key="{{activity}}">
+    <template is="activityItem" data="{{...activity}}"></template>
+  </view>
+</view>

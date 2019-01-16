@@ -1,0 +1,33 @@
+<i-panel title="发布出游">
+    <i-input value="{{ travelname }}" bind:change="bindInputTravelName" title="出游标题" type="textarea" placeholder="请输入出游标题" />
+    <i-input value="{{ city }}" bind:change="bindInputCity" type="textarea" title="出游地点" placeholder="请输入出游地点" />
+     <i-panel>
+    <view style='display:flex;padding:7px 15px;'>
+      <text style="color:#495060;min-width:65px;padding-right:10px;font-size:14px;">开始日期</text>
+      <picker style="width:100%;" mode="date" value="{{starttime}}" bindchange="setStartTime">
+        <view style="color:#495060;font-size:14px;">
+          {{starttime}}
+        </view>
+      </picker>
+    </view>
+   </i-panel>
+    <i-panel>
+    <view style='display:flex;padding:7px 15px;'>
+      <text style="color:#495060;min-width:65px;padding-right:10px;font-size:14px;">结束日期</text>
+      <picker style="width:100%;" mode="date" value="{{endtime}}" bindchange="setEndTime">
+        <view style="color:#495060;font-size:14px;">
+          {{endtime}}
+        </view>
+      </picker>
+    </view>
+   </i-panel>
+   <i-input value="{{ kind }}" bind:change='bindInputKind' style="height:200px;" type="textarea" title="活动类型" placeholder="请输入活动类型" maxlength="10" />
+   <i-input value="{{ cost }}" bind:change='bindInputCost' style="height:200px;" type="textarea" title="人均花费" placeholder="请输入人均花费" maxlength="10" />
+    <i-input value="{{ description }}" bind:change='bindInputDescription' style="height:200px;" type="textarea" title="详细描述" placeholder="请输入详细描述(最多50字)" maxlength="50" />
+  
+    <view style="padding:20px;">
+      <i-button type="success" bind:click="handleSubmit" size="small" long="true" shape="circle">发布出游</i-button>
+    </view>
+    
+
+</i-panel>

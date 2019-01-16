@@ -1,0 +1,20 @@
+/* pages/release/release.wxss */
+.container{
+  margin-top: 50rpx;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+  margin-right: 20rpx; 
+}
+.item-container{
+  box-sizing: border-box;
+  border: 0 solid #e9eaec;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+ 
+ 
+}
+.text{
+  line-height: 60rpx;
+  font-size: 30rpx;
+}

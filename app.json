@@ -5,10 +5,12 @@
     "pages/me/me",
     "pages/me/mypost/mypost",
     "pages/activity/activity",
-    "pages/posts/post-detail/post-detail",
     "pages/me/myactivity/myactivity",
     "pages/me/mydata/mydata",
-    "pages/me/mymodify/mymodify"
+    "pages/me/mymodify/mymodify",
+    "pages/release/release",
+    "pages/activity/activitydetail/activitydetail",
+    "pages/activity/activitymodify/activitymodify"
   ],
   "window": {
     "navigationBarBackgroundColor": "white",

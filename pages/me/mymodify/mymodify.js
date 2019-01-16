@@ -1,9 +1,9 @@
 // pages/userSetting/userModify.js
-
+const network = require("../../../utils/network.js")
 const {
   api
 } = require("../../../utils/config.js");
-const app = getApp();
+var app = getApp();
 
 Page({
 
@@ -12,27 +12,27 @@ Page({
    */
   data: {
     value: "",
-    type: ""
+    type: "",
+    openid:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.setData({
+      openid:app.globalData.user.openid
+    })
     var type = options.type;
     this.setData({
       type: options.type,
       value: options.value
     });
-    if (type == "name") {
+    if (type == "nickname") {
       wx.setNavigationBarTitle({
         title: '修改姓名'
       })
-    } else if (type == "gender") {
-      wx.setNavigationBarTitle({
-        title: '修改性别'
-      })
-    } else if (type == "phone") {
+    } else if (type == "phonenumber") {
       wx.setNavigationBarTitle({
         title: '修改手机号码'
       })
@@ -91,20 +91,12 @@ Page({
   confirmModify: function(event) {
     var type = this.data.type;
     var data = {};
-    data.id = app.globalData.user.id;
-    if (type == "name") {
-      data.name = event.detail.value;
-    } else if (type == "gender") {
-      if (event.detail.value != "男" && event.detail.value != "女") {
-        wx.showToast({
-          title: '性别只能填"男"或者"女"',
-          icon: 'none',
-          duration: 2000
-        });
-        return;
-      }
-      data.gender = event.detail.value == "男" ? 1 : 0;
-    } else if (type == "phone") {
+    data.openid = app.globalData.user.openid;
+    if (type == "nickname") {
+      data.nickname = event.detail.value;
+      data.phonenumber = app.globalData.user.phonenumber
+
+    } else if (type == "phonenumber") {
       var reg = /^[1][3,4,5,7,8][0-9]{9}$/;
       if (!reg.test(event.detail.value)){
         wx.showToast({
@@ -114,13 +106,21 @@ Page({
         });
         return;
       }
-      data.phone = event.detail.value;
+      data.phonenumber = event.detail.value;
+      data.nickname = app.globalData.user.nickname;
     }
-
-    network.POST({
-      url: api.update,
-      data: data,
+    
+    network.GET({
+      url: api.server+"UserServlet?method=updateInfo",
+      
+      data: {
+        openid :data.openid,
+        nickname : data.nickname,
+        phonenumber: data.phonenumber
+      },
       success: res => {
+        app.globalData.user.nickname = data.nickname;
+        app.globalData.user.phonenumber = data.phonenumber;
         if (res.success) {
           var pages = getCurrentPages();
           if (pages.length > 1) {

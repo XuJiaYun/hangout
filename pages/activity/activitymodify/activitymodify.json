@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "navigationBarTitleText": "修改出游",
+  "usingComponents": {
+    "i-button": "../../../dist/button/index",
+    "i-panel": "../../../dist/panel/index",
+    "i-input": "../../../dist/input/index"
+  }
+}

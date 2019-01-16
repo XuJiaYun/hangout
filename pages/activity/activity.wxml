@@ -2,15 +2,17 @@
 <view>
   <view class="search">
     <icon type="search" class="search-img" size="13" color="#405f80"></icon>
-    <input type="text" placeholder="栖霞山" placeholder-class="placeholder" ></input>
+    <input type="text" placeholder="{{searchContent}}" placeholder-class="placeholder" bindinput='listenerSearchInput' bindconfirm='toSearch' ></input>
     <image src="/images/icon/xx.png" class="xx-img"></image>
   </view>
   <view style="display:flex;width:100%">
     <view class="filter-item {{activeRelease}}" bindtap="showReleasedTasks"><text>我发布的</text></view>
       <view class="filter-item {{activeAccept}} "  bindtap="showAcceptedTasks"><text>我参加的</text></view>
   </view>
-  <view>
-    <template is="activityItem"></template>
-    <template is="activityItem"></template>
+ 
+  <view style="display:inline-block" wx:for="{{activities}}" wx:for-item="activity"  >
+    <view catchtap="onTap" data-activity="{{activity}}" >
+      <template is="activityItem" data="{{...activity}}" ></template>
+    </view> 
   </view>
 </view>

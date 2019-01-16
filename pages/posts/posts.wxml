@@ -13,13 +13,8 @@
   </swiper>
   <i-panel title="" style="width:100%">
     <view style="padding: 5px;width=100%;display:flex">
-      <view class="filter-item" bindtap='getTaskByTime'><text class="{{activeTime}}">最新发布</text></view>
-      <view class="filter-item" bindtap='getTaskByMoney'><text class="{{activeMoney}}">最多酬劳</text></view>
-      <picker mode="selector" range="{{taskTypes}}" value="0" bindchange='getTaskByType'>
-        <view class="filter-item {{activeType}}" id="type-filter">
-          {{taskType}}
-        </view>
-      </picker>
+      <view class="filter-item" bindtap='getTaskByTime'><text class="{{activeTime}}">最新</text></view>
+      <view class="filter-item" bindtap='getTaskByMoney'><text class="{{activeMoney}}">最热</text></view>
       <view class="filter-item" style="margin-left:auto;">
         <button class="torelease-btn" bindtap="toRelease" size="mini" shape="circle" >发布任务</button>
       </view>

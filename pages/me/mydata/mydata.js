@@ -1,18 +1,34 @@
 // pages/me/mydata/mydata.js
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    phonenumber:456,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(app.globalData.user)
+    if(app.globalData.user.phonenumber!=-1){
+      this.setData({
+        phonenumber:app.globalData.user.phonenumber
+      })
+    }else{
+      this.setData({
+        phonenumber:"未设置"
+      })
+    }
+    this.setData({
+      nickname:app.globalData.user.nickname,
+      gender:app.globalData.user.gender,
+    
+    })
   },
 
   /**
