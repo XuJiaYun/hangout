@@ -1,11 +1,11 @@
 @import "activity-item/activity-item-template.wxss";
-.search{
+/* .search{
   background-color: #f2f2f2;
   height: 80rpx;
   width: 100%;
   display: flex;
   flex: row;
-}
+} */
 .search-img{
   margin: auto 0 auto 20rpx;
 }
@@ -14,12 +14,12 @@
   color: #d1d1d1;
   margin-left: 20rpx;
 }
-.search input{
+/* .search input{
   height: 100%;
   width: 600rpx;
   margin-left: 20rpx;
   font-size: 28rpx;
-}
+} */
 .xx-img{
   height: 30rpx;
   width: 30rpx;
@@ -35,4 +35,11 @@
 
 .filter-active {
   color: rgb(32, 71, 201);
+}
+.box {  
+  margin: 20rpx; 
+}
+
+.box view.cu-bar {
+  margin-top: 20rpx; 
 }

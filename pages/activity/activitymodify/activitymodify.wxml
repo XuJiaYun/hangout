@@ -1,12 +1,12 @@
-<i-panel title="发布出游">
-    <i-input value="{{ travelname }}" bind:change="bindInputTravelName" title="出游标题" type="textarea" placeholder="请输入出游标题" />
-    <i-input value="{{ city }}" bind:change="bindInputCity" type="textarea" title="出游地点" placeholder="请输入出游地点" />
+<!-- <i-panel title="修改出游">
+    <i-input value="{{ title }}" bind:change="bindInputTitle" title="出游标题" type="textarea" placeholder="请输入出游标题" />
+    <i-input value="{{ place }}" bind:change="bindInputPlace" type="textarea" title="出游地点" placeholder="请输入出游地点" />
      <i-panel>
     <view style='display:flex;padding:7px 15px;'>
       <text style="color:#495060;min-width:65px;padding-right:10px;font-size:14px;">开始日期</text>
-      <picker style="width:100%;" mode="date" value="{{starttime}}" bindchange="setStartTime">
+      <picker style="width:100%;" mode="date" value="{{startTime}}" bindchange="setStartTime">
         <view style="color:#495060;font-size:14px;">
-          {{starttime}}
+          {{startTime}}
         </view>
       </picker>
     </view>
@@ -14,21 +14,68 @@
     <i-panel>
     <view style='display:flex;padding:7px 15px;'>
       <text style="color:#495060;min-width:65px;padding-right:10px;font-size:14px;">结束日期</text>
-      <picker style="width:100%;" mode="date" value="{{endtime}}" bindchange="setEndTime">
+      <picker style="width:100%;" mode="date" value="{{endTime}}" bindchange="setEndTime">
         <view style="color:#495060;font-size:14px;">
-          {{endtime}}
+          {{endTime}}
         </view>
       </picker>
     </view>
    </i-panel>
-   <i-input value="{{ kind }}" bind:change='bindInputKind' style="height:200px;" type="textarea" title="活动类型" placeholder="请输入活动类型" maxlength="10" />
+   <i-input value="{{ type }}" bind:change='bindInputKind' style="height:200px;" type="textarea" title="活动类型" placeholder="请输入活动类型" maxlength="10" />
+   <i-input value="{{ maxNumber }}" bind:change='bindInputMaxNumber' style="height:200px;" type="textarea" title="最大人数" placeholder="请输入最大人数" maxlength="10" />
    <i-input value="{{ cost }}" bind:change='bindInputCost' style="height:200px;" type="textarea" title="人均花费" placeholder="请输入人均花费" maxlength="10" />
     <i-input value="{{ description }}" bind:change='bindInputDescription' style="height:200px;" type="textarea" title="详细描述" placeholder="请输入详细描述(最多50字)" maxlength="50" />
   
     <view style="padding:20px;">
       <i-button type="success" bind:click="handleSubmit" size="small" long="true" shape="circle">修改出游</i-button>
     </view>
-    
+  </i-panel> -->
+  <view class="cu-form-group margin-top">
+    <view class='title'>活动标题</view>
+    <input placeholder="请输入活动标题" class='radius' name='input' value="{{ title }}" bindchange="bindInputTitle"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class='title'>出游地点</view>
+    <input placeholder="请输入出游地点" class='radius' name='input' value="{{ place }}" 
+    bindchange="bindInputPlace">
+  </input>
+  </view>
+  <view class="cu-form-group">
+    <view class='title'>开始日期</view>
+    <picker mode="date" value="{{startTime}}"  bindchange="setStartTime">  
+        {{startTime}}  
+    </picker>
+    <picker mode="time" value="{{time}}"  bindchange="setTheStartTime">
+        {{theStartTime}}
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class='title'>结束日期</view>
+    <picker mode="date" value="{{endTime}}"  bindchange="setEndTime">  
+        {{endTime}}  
+    </picker>
+    <picker mode="time" value="{{time}}"  bindchange="setTheEndTime">
+        {{theEndTime}}
+    </picker>
+  </view>
+  <view class="cu-form-group">
+    <view class='title'>活动类型</view>
+    <input value="{{ type }}" bindchange='bindInputType' placeholder="请输入活动类型" class='radius' name='input'></input>
+  </view>
 
-</i-panel>
+  <view class="cu-form-group">
+    <view class='title'>人均花费</view>
+    <input value="{{ cost }}" bindchange='bindInputCost' placeholder="请输入人均花费" class='radius' name='input'></input>
+  </view>
 
+  <view class="cu-form-group">
+    <view class='title'>最大人数</view>
+    <input value="{{ maxNumber }}" bindchange='bindInputMaxNumber' placeholder="请输入最大人数" class='radius' name='input'></input>
+  </view>
+  <view class="cu-form-group top" >
+    <view class='title'>活动描述</view>
+    <input placeholder="请输入活动描述"   placeholder-class='placeholder' value="{{ description }}" bindchange='bindInputDescription'></input>
+  </view>
+  <view class="padding flex flex-direction">
+  <button catchtap = "handleSubmit" class='cu-btn bg-green margin-tb-sm lg'>修改</button>
+</view>

@@ -3,13 +3,13 @@
   <view class="item-container">
     <image class="post-img" src="/images/post/cat.png"></image>
     <view class="text-container">
-      <text class="title">{{travelname}}</text>
-      <text class="time">{{starttime}}</text>
-      <text class="city">{{city}}</text>
+      <text class="title">{{title}}</text>
+      <text class="time">{{startTime}}</text>
+      <text class="city">{{place}}</text>
     </view>
     <view class="state">
       <image class="appointment" src="/images/icon/appointment.png" ></image>
-      <text class="rest-date">剩余5天</text>
+      <text class="rest-date">剩余{{countDownDays}}天</text>
     </view>
     
   </view>

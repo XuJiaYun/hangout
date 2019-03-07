@@ -7,78 +7,111 @@ const timeApi = require('../../../utils/util.js');
 Page({
 
   data: {
-    starttime: "",
-    endtime: '',
-    travelname: "",
-    city: "",
-    kind: "",
-    description: "",
-    cost: ""
+    travelId: "",
+    openId: "",
+    startTime: "",
+    theStartTime: "",
+    endTime: "",
+    theEndTime: "",
+    title: "",
+    place: "",
+    type: "",
+    cost: "",
+    maxNumber: "",
+    description: ""
   },
   onLoad: function (option) {
     var activity = JSON.parse(option.current)
     this.setData({
-      openid: app.globalData.user.openid,
-      travelid: activity.travelid,
-      starttime: activity.starttime,
-      endtime: activity.endtime,
-      travelname: activity.travelname,
-      city: activity.city,
-      kind: activity.kind,
-      description: activity.description,
+      openId: app.globalData.user.openid,
+      travelId: activity.travelId,
+      openId: activity.openId,
+      startTime: timeApi.formatDate(new Date(activity.startTime)),
+      theStartTime: timeApi.formatTime(new Date(activity.startTime)),
+      endTime: timeApi.formatDate(new Date(activity.endTime)),
+      theEndTime: timeApi.formatTime(new Date(activity.endTime)),
+      title: activity.title,
+      place: activity.place,
+      type: activity.type,
       cost: activity.cost,
-      authorid: activity.openid
-      
+      maxNumber: activity.maxNumber,
+      description: activity.description
     })
   },
   setStartTime: function (e) {
     this.setData({
-      starttime: e.detail.value
+      startTime: e.detail.value
+    })
+  },
+  setTheStartTime: function (e) {
+    this.setData({
+      theStartTime: e.detail.value
     })
   },
   setEndTime: function (e) {
     this.setData({
-      endtime: e.detail.value
+      endTime: e.detail.value
     })
   },
-  bindInputTravelName: function (e) {
+  setTheEndTime: function (e) {
     this.setData({
-      travelname: e.detail.detail.value
+      theEndTime: e.detail.value
     })
   },
-  bindInputCity: function (e) {
+  bindInputTitle: function (e) {
     this.setData({
-      city: e.detail.detail.value
+      title: e.detail.value
+    })
+  },
+  bindInputPlace: function (e) {
+    this.setData({
+      place: e.detail.value
     })
   },
   bindInputKind: function (e) {
     this.setData({
-      kind: e.detail.detail.value
+      type: e.detail.detail.value
     })
   },
   bindInputCost: function (e) {
     this.setData({
-      cost: e.detail.detail.value
+      cost: e.detail.value
+    })
+  },
+  bindInputMaxNumber:function(e){
+    this.setData({
+      maxNumber: e.detail.value
     })
   },
   bindInputDescription: function (e) {
     this.setData({
-      description: e.detail.detail.value
+      description: e.detail.value
     })
   },
   handleSubmit: function () {
-    if (!app.globalData.user.phonenumber) {
+    if (!app.globalData.user.phoneNumber) {
       wx.showToast({
-        title: '完善信息后才能修改任务哦',
+        title: '完善信息后才能修改哦',
         icon: 'none',
         duration: 2000
       })
       return;
     }
-
-    network.GET({
-      url: api.server + "ActivitiesServlet?method=ModifyInfo",
-      data: this.data,
+    console.log(this.data)
+    network.POST({
+      url: api.server + "/activity/update",
+      data: {
+        travelId:this.data.travelId,
+        title: this.data.title,
+        place: this.data.place,
+        type: this.data.type,
+        description: this.data.description,
+        cost: this.data.cost,
+        maxNumber: this.data.maxNumber,
+        startTime: this.data.startTime + " " + this.data.theStartTime + ":00",
+        endTime: this.data.endTime + " " + this.data.theEndTime + ":00",
+        openId: this.data.openId
+      },
       success: res => {
         if (res.success) {
           wx.navigateBack({

@@ -12,12 +12,23 @@ Page({
   },
 
   onLoad: function (options) {
+    this.setData({
+      openId:app.globalData.user.openId
+    })
     network.GET({
-      url: api.listActivities,
+      url: api.server + "/activity/selectJoinedActivity",
+      data:{
+        openId:this.data.openId
+      },
       success: res => {
         if (res.success) {
+          var activities = res.content;
+          for (var i = 0; i < activities.length; i++) {
+            var countDownDays = timeApi.getBetweenTime(activities[i].startTime)
+            activities[i]["countDownDays"] = countDownDays
+          }
           this.setData({
-            releasedTasks: res.content.activities
+            activities: activities
           })
         } else {
           wx.showToast({
@@ -28,6 +39,11 @@ Page({
         }
       }
     })
-  }
+  },
+  onTap: function (e) {
+    wx.navigateTo({
+      url: '../../activity/activitydetail/activitydetail?travelId=' + e.currentTarget.dataset.activity.travelId
+    })
+  },
 
 })

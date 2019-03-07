@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "出游详情",
+  "navigationBarTitleText": "活动详情",
   "component": true,
   "usingComponents": {
     "i-button": "../../../dist/button/index"

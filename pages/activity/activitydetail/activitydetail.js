@@ -1,73 +1,82 @@
-
 const app = getApp()
 const network = require("../../../utils/network.js")
-const { api } = require("../../../utils/config.js")
+const {
+  api
+} = require("../../../utils/config.js")
 const timeApi = require('../../../utils/util.js');
 
 Page({
 
-  data:{
-    openid:"",
-    authorid:"",
-    travelid:"",
-    starttime: "",
-    endtime: '',
-    travelname: "",
-    city: "",
-    kind: "",
-    description: "",
-    cost: "",
-    totalnumber:"",
-    condition:"0"
+  data: {
+    showModify: 0,
+    showDelete: 0,
+    showJoin: 0,
+    showQuit: 0
   },
-  onLoad:function(option){
-    var activity = JSON.parse(option.current)
-    this.setData({
-      openid: app.globalData.user.openid,
-      travelid: activity.travelid,
-      starttime: activity.starttime,
-      endtime: activity.endtime,
-      travelname: activity.travelname,
-      city: activity.city,
-      kind: activity.kind,
-      description: activity.description,
-      cost: activity.cost, 
-      authorid:activity.openid,
-      totalnumber: activity.totalnumber
-    })
-    
+  getActivityDetail: function (travelId) {
     network.GET({
-      url: api.server + "ActivitiesServlet?method=ViewDetail",
-      data:{
-        openid: app.globalData.user.openid,
-        travelid: activity.travelid
-      },
+      url: api.server + "/activity/selectActivityByTravelId?travelId=" + travelId,
       success: res => {
-        if (res.success){
+        if (res.success) {
           this.setData({
-            flag: res.content
+            activity: res.content
           })
+          if (app.globalData.user.openId == this.data.activity.openId) {
+            this.setData({
+              showModify: 1,
+              showDelete: 1
+            })
+          } else {
+            network.POST({
+              url: api.server + "/attendList/isExist",
+              data: {
+                travelId: travelId,
+                openId: app.globalData.user.openId
+              },
+              success: res2 => {
+                if (res2.success) {
+                  if (res2.content == 1) {
+                    this.setData({
+                      showQuit: 1
+                    })
+                  } else if (res2.content == 0) {
+                    this.setData({
+                      showJoin: 1
+                    })
+                  }
+                }
+              }
+            })
+          }
         }
       }
     })
-    
-    
-   
-    
-
-    
   },
-  handleModify:function(){
-    console.log(this.data)
+  onLoad: function(option) {
+    var travelId = option.travelId;
+    this.getActivityDetail(travelId);
+  },
+  
+  handleModify: function() {
     wx.navigateTo({
-      url: '../activitymodify/activitymodify?current=' + JSON.stringify(this.data)
+      url: '../activitymodify/activitymodify?current=' + JSON.stringify(this.data.activity)
     })
   },
-  handleDelete:function(){
+  showMember: function(){
+    wx.navigateTo({
+      url: '../activitymember/activitymember?travelId='+ this.data.activity.travelId
+    })
+  },
+  showNotice:function(){
+    wx.navigateTo({
+      url: '../activitynotice/activitynotice?travelId='+this.data.activity.travelId
+    })
+  },
+  handleDelete: function() {
     network.GET({
-      url: api.server+"ActivitiesServlet?method=CancleActivity",
+      url: api.server + "/activity/delete",
       data: {
-        travelid:this.data.travelid
+        travelId: this.data.activity.travelId
       },
       success: res => {
         if (res.success) {
@@ -90,12 +99,12 @@ Page({
       }
     })
   },
-  joinIn:function(){
-    network.GET({
-      url: api.server + "AttendListServlet?method=AttendActivity",
+  handleJoin: function() {
+    network.POST({
+      url: api.server + "/attendList/insert",
       data: {
-        openid: this.data.openid,
-        travelid: this.data.travelid
+        openId: app.globalData.user.openId,
+        travelId: this.data.activity.travelId
       },
       success: res => {
         if (res.success) {
@@ -104,10 +113,13 @@ Page({
             icon: 'success',
             duration: 2000
           });
+
           this.setData({
-            flag :1
+            showQuit: 1,
+            showJoin:0
           })
-          
+
+
         } else {
           wx.showToast({
             title: '参与失败',
@@ -118,19 +130,13 @@ Page({
       }
     })
   },
-  quit: function () {
-    if(this.data.openid==this.data.authorid){
-      wx.showToast({
-        title: '创建者无法退出',
-        icon: 'none'
-      })
-      return
-    }
-    network.GET({
-      url: api.server + "AttendListServlet?method=QuitActivity",
+  handleQuit: function() {
+
+    network.POST({
+      url: api.server + "/attendList/delete",
       data: {
-        openid: this.data.openid,
-        travelid: this.data.travelid
+        openId: app.globalData.user.openId,
+        travelId: this.data.activity.travelId
       },
       success: res => {
         if (res.success) {
@@ -140,9 +146,10 @@ Page({
             duration: 2000
           });
           this.setData({
-            flag: 0
+            showJoin:1,
+            showQuit:0
           })
-          
+
         } else {
           wx.showToast({
             title: '退出失败',
@@ -154,6 +161,6 @@ Page({
     })
   }
 
-  
- 
+
+
 })

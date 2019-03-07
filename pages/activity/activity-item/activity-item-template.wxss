@@ -48,7 +48,7 @@
 .appointment{
   
   margin-right: 20rpx;
-  width: 80rpx;
-  height: 80rpx;
+  width: 100rpx;
+  height: 100rpx;
   margin-top: 5rpx;
 }

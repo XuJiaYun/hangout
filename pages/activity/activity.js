@@ -14,12 +14,16 @@ Page({
 
   onLoad: function (options) {
     network.GET({
-      url: api.server+"ActivitiesServlet?method=ViewAll",
+      url: api.server+"/activity/selectAllActivity",
       success: res => {
         if (res.success) {
-          console.log(res)
+          var activities = res.content;
+          for (var i = 0; i < activities.length; i++) {
+            var countDownDays = timeApi.getBetweenTime(activities[i].startTime)
+            activities[i]["countDownDays"] = countDownDays
+          }
           this.setData({
-            activities: res.content
+            activities: activities
           })
         } else {
           wx.showToast({
@@ -33,14 +37,14 @@ Page({
   },
   onTap:function(e){
     wx.navigateTo({
-      url: 'activitydetail/activitydetail?current='+JSON.stringify(e.currentTarget.dataset.activity)
+      url: 'activitydetail/activitydetail?travelId='+e.currentTarget.dataset.activity.travelId
     })
   },
   onPullDownRefresh:function(){
     wx.showNavigationBarLoading();
 
     network.GET({
-      url: api.server+"ActivitiesServlet?method=ViewAll",
+      url: api.server + "/activity/selectAllActivity",
       success: res => {
         if (res.success) {
           
@@ -66,9 +70,9 @@ Page({
   },
   toSearch: function () {
     network.GET({
-      url: api.server + "ActivitiesServlet?method=ViewBlank",
+      url: api.server + "/activity/selectActivityByTitle",
       data:{
-        searchString: this.data.searchInput
+        title: this.data.searchInput
       },
       success: res => {
         if (res.success) {

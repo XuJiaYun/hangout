@@ -1,14 +1,14 @@
 <import src="../activity/activity-item/activity-item-template.wxml"/>
 <view>
   <swiper indicator-dots="true" autoplay="true" interval="5000">
-    <swiper-item>
-      <image src="/images/wx.png" data-postid></image>
+    <swiper-item >
+      <image src="/images/ads/ad1.png" ></image>
+    </swiper-item >
+    <swiper-item >
+      <image src="/images/ads/ad2.png"></image>
     </swiper-item>
-    <swiper-item>
-      <image src="/images/vr.png"></image>
-    </swiper-item>
-    <swiper-item>
-      <image src="/images/iqiyi.png"></image>
+    <swiper-item >
+      <image src="/images/ads/ad3.png"></image>
     </swiper-item>
   </swiper>
   <i-panel title="" style="width:100%">
@@ -16,12 +16,14 @@
       <view class="filter-item" bindtap='getTaskByTime'><text class="{{activeTime}}">最新</text></view>
       <view class="filter-item" bindtap='getTaskByMoney'><text class="{{activeMoney}}">最热</text></view>
       <view class="filter-item" style="margin-left:auto;">
-        <button class="torelease-btn" bindtap="toRelease" size="mini" shape="circle" >发布任务</button>
+        <button class="torelease-btn" bindtap="toReleaseDiary" size="mini" shape="circle" >发表游记</button>
+        <button class="torelease-btn" bindtap="toRelease" size="mini" shape="circle" >发布出游</button>
       </view>
     </view>
 </i-panel>
-  <view>
-    <template is="activityItem"></template>
-    <template is="activityItem"></template>
+  <view style="display:inline-block" wx:for="{{activities}}" wx:for-item="activity"  >
+    <view catchtap="onTap" data-activity="{{activity}}" >
+      <template is="activityItem" data="{{...activity}}" ></template>
+    </view> 
   </view>
 </view>

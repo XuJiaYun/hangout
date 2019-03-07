@@ -7,60 +7,78 @@ const timeApi = require('../../utils/util.js');
 Page({
 
   data: {
-    starttime: "",
-    endtime: '',
-    travelname: "",
-    city: "",
-    kind:"",
+    startTime: "",
+    endTime: '',
+    title: "",
+    place: "",
+    type:"",
     description:"",
-    cost:""
+    cost:"",
+    maxNumber:""
   },
   onLoad: function () {
     var now = timeApi.formatDate(new Date());
     var time = timeApi.formatTime(new Date());
     this.setData({
-      starttime: now,
-      endtime: now,
-      openid: app.globalData.user.openid
+      startTime: now,
+      endTime: now,
+      theStartTime:time,
+      theEndTime:time,
+      openId: app.globalData.user.openId
     })
   },
   setStartTime: function (e) {
     this.setData({
-      starttime: e.detail.value
+      startTime: e.detail.value
+    })
+  },
+  setTheStartTime: function(e){
+    this.setData({
+      theStartTime:e.detail.value
     })
   },
   setEndTime: function (e) {
     this.setData({
-      endtime: e.detail.value
+      endTime: e.detail.value
     })
   },
-  bindInputTravelName: function (e) {
+  setTheEndTime: function(e){
     this.setData({
-      travelname: e.detail.detail.value
+      theEndTime:e.detail.value
     })
   },
-  bindInputCity: function (e) {
+  bindInputTitle: function (e) {
     this.setData({
-      city: e.detail.detail.value
+      title: e.detail.value
     })
   },
-  bindInputKind: function (e) {
+  bindInputMaxNumber: function (e) {
     this.setData({
-      kind: e.detail.detail.value
+      maxNumber: e.detail.value
+    })
+  },
+  bindInputPlace: function (e) {
+    this.setData({
+      place: e.detail.value
+    })
+  },
+  bindInputType: function (e) {
+    this.setData({
+      type: e.detail.value
     })
   },
   bindInputCost: function (e) {
     this.setData({
-      cost: e.detail.detail.value
+      cost: e.detail.value
     })
   },
   bindInputDescription: function (e) {
     this.setData({
-      description: e.detail.detail.value
+      description: e.detail.value
     })
   },
   handleSubmit: function () {
-    if (!app.globalData.user.phonenumber) {
+    if (!app.globalData.user.phoneNumber) {
       wx.showToast({
         title: '完善信息后才能发布任务哦',
         icon: 'none',
@@ -69,9 +87,20 @@ Page({
       return;
     }
     
-    network.GET({
-      url: api.server+"ActivitiesServlet?method=ReleaseInfo",
-      data: this.data,
+    
+    network.POST({
+      url: api.server+"/activity/insert",
+      data: {
+        title:this.data.title,
+        place:this.data.place,
+        type:this.data.type,
+        description:this.data.description,
+        cost:this.data.cost,
+        maxNumber:this.data.maxNumber,
+        startTime: this.data.startTime + " " + this.data.theStartTime + ":00",
+        endTime: this.data.endTime + " " + this.data.theEndTime + ":00",
+        openId:this.data.openId
+      },
       success: res => {
         if (res.success) {
           wx.navigateBack({

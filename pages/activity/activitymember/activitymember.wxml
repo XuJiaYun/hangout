@@ -1,0 +1,19 @@
+<view class="table">
+  <view class="tr bg-w">
+    <view class="th">姓名</view>
+    <view class="th">性别</view>
+    <view class="th ">联系方式</view>
+  </view>
+  <block wx:for="{{userList}}" >
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td">{{item.nickname}}</view>
+      <view class="td">{{item.gender==1?"男":"女"}}</view>
+      <view class="td">{{item.phoneNumber}}</view>
+    </view>
+    <view class="tr" wx:else>
+      <view class="td">{{item.nickname}}</view>
+      <view class="td">{{item.gender==1?"男":"女"}}</view>
+      <view class="td">{{item.phoneNumber}}</view>
+    </view>
+  </block>
+</view>

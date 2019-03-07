@@ -1,0 +1,13 @@
+<!--pages/diary/releasediary/releasediary.wxml-->
+<view class="cu-form-group margin-top">
+    <view class='title'>标题</view>
+    <input placeholder="请输入标题" class='radius' name='input' value="{{ title }}" bindchange="bindInputTitle"></input>
+  </view>
+  <view class="cu-form-group top" >
+    <view class='title'>内容</view>
+    <input placeholder="请输入内容"   placeholder-class='placeholder' value="{{ content }}" bindchange='bindInputContent'></input>
+  </view>
+  <view class="padding flex flex-direction">
+  <button catchtap = "chooseImage" class='cu-btn bg-green margin-tb-sm lg'>上传图片</button>
+  <button catchtap = "handleSubmit" class='cu-btn bg-green margin-tb-sm lg'>发表</button>
+</view>

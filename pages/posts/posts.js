@@ -1,4 +1,4 @@
-
+const timeApi = require('../../utils/util.js')
 const network = require("../../utils/network.js")
 const {
   api
@@ -52,13 +52,13 @@ Page({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         var scope = this;
         // 登录
-        console.log(res)
+        
         network.GET({
           url: api.loginsession + "?appid=wx64f9bce9ce86f639&secret=cc5e0926376f0d3e20f8d37f68a9529d&js_code=" + res.code + "&grant_type=authorization_code",
           success: res2 => {
             network.GET({
               // url: api.login + res2.openid,
-              url: api.server+"UserServlet?method=login&userInfo=" + res2.openid,
+              url: api.server+"/user/" + res2.openid,
               success: response => {
                 if (response.success) {
                   if (response.content)
@@ -66,10 +66,10 @@ Page({
                   else{
                     var infoRes = app.globalData;
                     var info = infoRes.userInfo
-                    network.GET({
-                      url: api.server+"UserServlet?method=register",
+                    network.POST({
+                      url: api.server+"/user/insert",
                       data: {
-                        openid: res2.openid,
+                        openId: res2.openid,
                         nickname: infoRes.userInfo.nickName,
                         gender: infoRes.userInfo.gender,
                         province: app.globalData.userInfo.province,
@@ -105,16 +105,38 @@ Page({
 
     
     })
+    network.GET({
+      url: api.server + "/activity/selectAllActivity",
+      success: res => {
+        if (res.success) {
+          var activities = res.content;
+          for(var i = 0; i < activities.length;i++){
+            var countDownDays = timeApi.getBetweenTime(activities[i].startTime)
+            activities[i]["countDownDays"] = countDownDays
+          }
+          this.setData({
+            activities: activities
+          })
+        } else {
+          wx.showToast({
+            title: '查询失败',
+            icon: 'none',
+            duration: 5000
+          })
+        }
 
-
-
-
-
-  
+        var countDownDays = timeApi.getBetweenTime(res.content[0].startTime)
+      }
+    })
   },
   toRelease: function() {
     wx.navigateTo({
       url: '../release/release'
+    })
+  },
+  toReleaseDiary: function () {
+    wx.navigateTo({
+      url: '../diary/releasediary/releasediary'
     })
   }
   

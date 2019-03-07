@@ -1,0 +1,6 @@
+/* pages/activity/activitynotice/activitynotice.wxss */
+.box{
+  position: fixed;
+  bottom:0px;
+  width: 100%
+}

@@ -1,0 +1,27 @@
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class='action'>
+    <text class='icon-title text-orange '></text> 消息列表
+  </view>
+</view>
+<view class="cu-list menu">
+  <block wx:for="{{noticeList}}" wx:for-item="item">
+    <view class="cu-item"  >
+      <view class='content' catchtap='handleDelete' data-notice="{{item}}">
+        <view class='text-grey'>{{item.nickname}}</view>
+        <view class='text-gray text-sm'>
+          <text class='text-red'></text>{{item.content}}</view>
+      </view>
+      <view class='action'>
+        <view class='text-grey text-xs'>{{item.noticeTime}}</view>
+      </view>
+    </view>
+    
+  </block>
+  <view class='box'>
+  <view class="cu-bar input">
+    <input class='solid-bottom' focus="{{false}}" maxlength="300" cursor-spacing="10" bindinput='bindInput'></input>
+    
+    <button class='cu-btn bg-green shadow-blur' catchtap='handleSubmit'>发送</button>
+  </view>
+  </view>
+</view>

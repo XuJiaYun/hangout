@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    phonenumber:456,
+  
   },
 
   /**
@@ -17,11 +17,11 @@ Page({
     console.log(app.globalData.user)
     if(app.globalData.user.phonenumber!=-1){
       this.setData({
-        phonenumber:app.globalData.user.phonenumber
+        phoneNumber:app.globalData.user.phoneNumber
       })
     }else{
       this.setData({
-        phonenumber:"未设置"
+        phoneNumber:"未设置"
       })
     }
     this.setData({

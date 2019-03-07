@@ -13,7 +13,7 @@ Page({
   data: {
     value: "",
     type: "",
-    openid:""
+    openId:""
   },
 
   /**
@@ -21,7 +21,7 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      openid:app.globalData.user.openid
+      openId:app.globalData.user.openId
     })
     var type = options.type;
     this.setData({
@@ -32,7 +32,7 @@ Page({
       wx.setNavigationBarTitle({
         title: '修改姓名'
       })
-    } else if (type == "phonenumber") {
+    } else if (type == "phoneNumber") {
       wx.setNavigationBarTitle({
         title: '修改手机号码'
       })
@@ -91,13 +91,13 @@ Page({
   confirmModify: function(event) {
     var type = this.data.type;
     var data = {};
-    data.openid = app.globalData.user.openid;
+    data.openId = app.globalData.user.openId;
     if (type == "nickname") {
       data.nickname = event.detail.value;
-      data.phonenumber = app.globalData.user.phonenumber
+      data.phoneNumber = app.globalData.user.phoneNumber
 
-    } else if (type == "phonenumber") {
-      var reg = /^[1][3,4,5,7,8][0-9]{9}$/;
+    } else if (type == "phoneNumber") {
+      var reg = /^^1(3|4|5|7|8)\d{9}$/;
       if (!reg.test(event.detail.value)){
         wx.showToast({
           title: '手机号码格式错误',
@@ -106,21 +106,21 @@ Page({
         });
         return;
       }
-      data.phonenumber = event.detail.value;
+      data.phoneNumber = event.detail.value;
       data.nickname = app.globalData.user.nickname;
     }
     
-    network.GET({
-      url: api.server+"UserServlet?method=updateInfo",
+    network.POST({
+      url: api.server+"/user/update",
       
       data: {
-        openid :data.openid,
+        openId :data.openId,
         nickname : data.nickname,
-        phonenumber: data.phonenumber
+        phoneNumber: data.phoneNumber
       },
       success: res => {
         app.globalData.user.nickname = data.nickname;
-        app.globalData.user.phonenumber = data.phonenumber;
+        app.globalData.user.phoneNumber = data.phoneNumber;
         if (res.success) {
           var pages = getCurrentPages();
           if (pages.length > 1) {
