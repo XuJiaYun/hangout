@@ -712,6 +712,7 @@ button.icon.lg {
 .cu-capsule {
   display: inline-flex;
   vertical-align: middle;
+ 
 }
 
 .cu-capsule+.cu-capsule {

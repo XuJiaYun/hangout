@@ -1,0 +1,18 @@
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class='action'>
+    <text class='icon-title text-orange '></text> 我的游记
+  </view>
+</view>
+<view class="cu-list menu">
+  <block wx:for="{{diaryList}}" wx:for-item="item">
+    <view class="cu-item"  >
+      <view class='content' catchtap='onTap' data-diary="{{item}}">
+        <view class='text-gray text-sm'>
+          <text class='text-red'></text>{{item.title}}</view>
+      </view>
+      <view class='action'>
+        <view class='text-grey text-xs'>{{item.time}}</view>
+      </view>
+    </view>
+  </block>
+</view>

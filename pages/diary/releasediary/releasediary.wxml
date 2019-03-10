@@ -1,4 +1,9 @@
 <!--pages/diary/releasediary/releasediary.wxml-->
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class='action'>
+    <text class='icon-title text-orange '></text> 我的游记
+  </view>
+</view>
 <view class="cu-form-group margin-top">
     <view class='title'>标题</view>
     <input placeholder="请输入标题" class='radius' name='input' value="{{ title }}" bindchange="bindInputTitle"></input>

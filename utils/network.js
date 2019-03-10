@@ -42,7 +42,6 @@ function request(method, requestHandler) {
       // complete
       requestHandler.complete && requestHandler.complete()
       console.log("request complete", res)
-
     }
   })
 }

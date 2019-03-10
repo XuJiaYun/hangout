@@ -119,6 +119,7 @@ Page({
         phoneNumber: data.phoneNumber
       },
       success: res => {
+        
         app.globalData.user.nickname = data.nickname;
         app.globalData.user.phoneNumber = data.phoneNumber;
         if (res.success) {

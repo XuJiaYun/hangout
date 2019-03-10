@@ -7,12 +7,14 @@
     "pages/me/myactivity/myactivity",
     "pages/me/mydata/mydata",
     "pages/me/mymodify/mymodify",
+    "pages/me/mydiary/mydiary",
     "pages/release/release",
     "pages/activity/activitydetail/activitydetail",
     "pages/activity/activitymodify/activitymodify",
     "pages/activity/activitymember/activitymember",
     "pages/activity/activitynotice/activitynotice",
-    "pages/diary/releasediary/releasediary"
+    "pages/diary/releasediary/releasediary",
+    "pages/diary/diarydetail/diarydetail"
   ],
   "window": {
     "navigationBarBackgroundColor": "white",

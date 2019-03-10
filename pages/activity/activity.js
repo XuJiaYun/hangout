@@ -46,8 +46,15 @@ Page({
     network.GET({
       url: api.server + "/activity/selectAllActivity",
       success: res => {
+        var activities = res.content;
         if (res.success) {
-          
+          for (var i = 0; i < activities.length; i++) {
+            var countDownDays = timeApi.getBetweenTime(activities[i].startTime)
+            activities[i]["countDownDays"] = countDownDays
+          }
+          this.setData({
+            activities: activities
+          })
           this.setData({
             activities: res.content
           })

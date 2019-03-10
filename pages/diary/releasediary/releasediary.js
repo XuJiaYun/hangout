@@ -29,6 +29,35 @@ Page({
       content: e.detail.value
     })
   },
+  handleSubmit:function(e){
+    network.POST({
+      url:api.server+'/diary/insert',
+      data:{
+        openId:app.globalData.user.openId,
+        title:this.data.title,
+        content:this.data.content,
+        pictureName:this.data.pictureName
+      },
+      success:res=>{
+        if(res.success){
+          wx.navigateBack({
+            delta: 1
+          });
+          wx.showToast({
+            title: '发表成功',
+            icon: 'success',
+            duration: 2000
+          })
+        }else{
+          wx.showToast({
+            title: '发表失败',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    })
+  },
   chooseImage: function(e){
     wx.chooseImage({
       count:1,
@@ -46,7 +75,7 @@ Page({
               wx.showToast({
                 title: '添加成功',
                 icon: 'success',
-                duration: 5000
+                duration: 2000
               })
               this.setData({
                 

@@ -19,7 +19,7 @@
       </navigator>
     </view>
     <view class="choice-container">
-      <navigator url="/pages/me/mypost/mypost" hover-class="navigator-hover">
+      <navigator url="/pages/me/mydiary/mydiary" hover-class="navigator-hover">
         <image class="icon" src="/images/icon/diary.png"></image>
         <text class="text">我的游记</text>
         <image class="arrow" src="/images/icon/arrow-right-grey.png"></image>

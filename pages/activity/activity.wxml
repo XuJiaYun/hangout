@@ -19,7 +19,6 @@
     <view class="filter-item {{activeRelease}}" bindtap="showReleasedTasks"><text>我发布的</text></view>
       <view class="filter-item {{activeAccept}} "  bindtap="showAcceptedTasks"><text>我参加的</text></view>
   </view>
- 
   <view style="display:inline-block" wx:for="{{activities}}" wx:for-item="activity"  >
     <view catchtap="onTap" data-activity="{{activity}}" >
       <template is="activityItem" data="{{...activity}}" ></template>
